@@ -1,0 +1,67 @@
+✅ Day 1: Introduction to .NET & C# Basics
+📘 Topics to Learn
+🔹 1. What is .NET?
+A framework/platform created by Microsoft.
+Allows you to build web, desktop, mobile, cloud, gaming, and IoT apps.
+Runs on Windows, Linux, and macOS (thanks to .NET Core / .NET 5+).
+Supports multiple languages: C#, F#, VB.NET (C# is most used).
+.NET Core and .NET 5/6/7/8 are modern, open-source, and cross-platform versions.
+
+🔹 2. What is C#?
+A modern, object-oriented programming language developed by Microsoft.
+Runs on the .NET platform.
+Syntax similar to C, C++, Java.
+
+🔹 3. Hello World Program in C#
+using System;
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+    }
+}
+
+🔹4. Basic C# Syntax
+Semicolon ; ends a statement
+Case-sensitive
+Entry point: Main() method
+
+
+🔹5. C# Data Types
+Type	  Description	                   Example
+int	  Integer	                   int a = 5;
+float	  Floating point	           float f = 5.5f;
+double	  Double precision	          double d = 5.5;
+char	  Single character	         char c = 'A';
+bool	  Boolean (true/false)	           bool b = true;
+string	  Text	                         string name = "John";
+
+🔹 6. Input & Output
+Console.WriteLine("Enter your name:");
+string name = Console.ReadLine();
+Console.WriteLine("Hello, " + name);
+
+
+🔹 7. Operators in C#
+Category	   Operators
+Arithmetic	   +, -, *, /, %
+Relational	   ==, !=, >, <, >=, <=
+Logical	           &&, ||, !
+Assignment	   =, +=, -=, *=, /=
+
+
+
+🧠 Interview Notes / FAQs
+Q1. What is the difference between .NET Framework and .NET Core?
+.NET Framework: Windows-only, older
+.NET Core / .NET 5+: Cross-platform, modern, open-source
+
+Q2. Why is C# used in .NET?
+C# is tightly integrated with the .NET runtime and libraries
+It's simple, modern, and powerful for both frontend and backend apps
+
+Q3. What is the role of CLR?
+CLR (Common Language Runtime) executes your C# code
+Handles memory management, security, type safety, exception handling
+
