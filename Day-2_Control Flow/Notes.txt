@@ -1,0 +1,99 @@
+✅ Day 2: Control Flow in C#
+1. Conditional Statements
+➤ if, else if, else
+🧠Example:
+int num = 10;
+if (num > 0)
+{
+    Console.WriteLine("Positive");
+}
+else if (num < 0)
+{
+    Console.WriteLine("Negative");
+}
+else
+{
+    Console.WriteLine("Zero");
+}
+
+➤ Ternary Operator
+🧠Example:
+int age=20;
+string result=(age>18)?"Adult":"Minor";
+Console.WriteLine(result);
+
+2. Switch Case:
+🧠Example:
+int day=3;
+switch(day){
+case 1:
+  Console.WriteLine("MON");
+  break;
+case 2:
+  Console.WriteLine("TUS");
+  break;
+  default:
+  Console.WriteLine("enter correct");
+  break:
+}
+
+
+
+2. 🔁 Loops in C#
+➤ for loop:
+🧠Example:
+for(int i=0;i<10;i++){
+    Console.WriteLine(i);
+}
+
+➤ while loop:
+🧠Example:
+int i = 1;
+while (i <= 5)
+{
+    Console.WriteLine(i);
+    i++;
+}
+
+➤ Do while loop:
+🧠Example:
+int i=1;
+do{
+Console.WriteLine(i);
+i++;
+}while(i<5);
+
+
+
+Part 3: Jump Statements in C#
+🔁 1. break
+Use: Immediately exits the loop or switch block.
+🧠Example:
+for (int i = 1; i <= 10; i++)
+{
+    if (i == 5)
+        break;
+    Console.WriteLine(i);
+}
+
+
+🔁 2. continue
+Use: Skips the current iteration and continues with the next one.
+🧠Example:
+for (int i = 1; i <= 5; i++)
+{
+    if (i == 3)
+        continue;
+    Console.WriteLine(i);
+}
+
+
+
+
+
+
+
+
+
+
+
