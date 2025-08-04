@@ -1,0 +1,107 @@
+DAY 3 - METHODS IN C#
+
+────────────────────────────────────────────
+🟢 WHAT IS A METHOD?
+────────────────────────────────────────────
+A method is a block of code that performs a specific task.
+It helps in reusability and modularity of code.
+
+▶️ Syntax:
+    returnType MethodName(parameter1, parameter2, ...)
+    {
+        // code block
+        return value; // if returnType is not void
+    }
+
+Example:
+    void GreetUser()
+    {
+        Console.WriteLine("Hello, User!");
+    }
+
+────────────────────────────────────────────
+🔹 PARAMETERS IN METHODS
+────────────────────────────────────────────
+Parameters allow us to pass values into methods.
+Parameters are inputs you pass to methods.
+
+▶️ Example:
+    void Dog(string name)
+    {
+        Console.WriteLine(name);
+    }
+
+▶️ Call:
+    Dog("Barking");
+
+────────────────────────────────────────────
+🔸 RETURN TYPES
+────────────────────────────────────────────
+Return type defines what value the method returns.
+
+▶️ Example (returns int):
+    int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+▶️ Call:
+    int sum = Add(10, 5);
+
+If no return value is needed, use `void`.
+
+────────────────────────────────────────────
+🔁 METHOD OVERLOADING
+────────────────────────────────────────────
+Method overloading = defining multiple methods with the same name but different parameters.
+
+▶️ Example:
+    using System;
+
+   class Program
+   {
+    int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+
+    double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+
+    int Multiply(int a, int b, int c)
+    {
+        return a * b * c;
+    }
+    static void Main()
+    {
+        // Call the integer multiply method (2 parameters)
+        int result1 = Multiply(4, 5);           // Calls Method 1
+        Console.WriteLine("Result 1: " + result1);
+
+        // Call the double multiply method
+        double result2 = Multiply(2.5, 3.5);     // Calls Method 2
+        Console.WriteLine("Result 2: " + result2);
+
+        // Call the integer multiply method (3 parameters)
+        int result3 = Multiply(2, 3, 4);         // Calls Method 3
+        Console.WriteLine("Result 3: " + result3);
+    }
+}
+
+✔️ Compiler decides which method to call based on number and types of parameters.
+
+────────────────────────────────────────────
+📌 BENEFITS OF USING METHODS
+────────────────────────────────────────────
+✔ Reusability  
+✔ Reduces code duplication  
+✔ Improves readability  
+✔ Easier testing and debugging
+
+────────────────────────────────────────────
+🧠 INTERVIEW TIP:
+────────────────────────────────────────────
+✅ Always mention method overloading is **compile-time polymorphism** (static polymorphism).
+✅ Return type alone CANNOT differentiate overloaded methods (must differ in parameters).
