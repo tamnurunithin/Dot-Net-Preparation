@@ -1,0 +1,97 @@
+📘 Day 4: Classes, Objects, Access Modifiers
+
+🔹 What is a Class?
+- A class is a blueprint for creating objects.
+- It defines fields (variables) and methods (functions).
+- Memory is allocated only when an object is created.
+
+Example:
+using System;
+class Vehicle{
+
+class Car
+{
+    public string brand;
+    public int speed;
+
+    public void Drive()
+    {
+        Console.WriteLine($"{brand} is driving at {speed} km/h.");
+    }
+}
+   
+     static void main(){
+     Car c = new Car();
+     c.brand="benz";
+     c.speed=100;
+     c.Drive();
+
+     }
+}
+
+🔹 What is an Object?
+- An object is an instance of a class.
+- Objects are used to access class members.
+
+Example:
+Car c = new Car();
+c.brand = "Toyota";
+c.speed = 120;
+c.Drive();
+
+🔹 Access Modifiers in C#
+
+| Modifier             | Description                                               |
+|----------------------|-----------------------------------------------------------|
+| public               | Accessible from anywhere                                  |
+| private              | Accessible only within the same class                     |
+| protected            | Accessible in the class and its derived (child) classes   |
+| internal             | Accessible within the same project/assembly               |
+| protected internal   | Accessible in same assembly or derived class              |
+| private protected    | Accessible in derived class within the same assembly      |
+
+Example:
+class Person
+{
+    public string name;
+    private int age;
+    protected string gender;
+
+    public void SetAge(int a)
+    {
+        age = a;
+    }
+
+    public void GetAge()
+    {
+        Console.WriteLine("Age: " + age);
+    }
+}
+
+🔹 Full Example:
+class Student
+{
+    public string name;
+    private int rollNumber;
+
+    public void SetRollNumber(int r)
+    {
+        rollNumber = r;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Name: {name}, Roll Number: {rollNumber}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student s = new Student();
+        s.name = "Nithin";
+        s.SetRollNumber(101);
+        s.Display();
+    }
+}
