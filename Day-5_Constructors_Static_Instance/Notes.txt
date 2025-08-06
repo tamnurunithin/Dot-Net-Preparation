@@ -1,0 +1,78 @@
+ Day 5: Constructors, Static vs Instance Members
+
+
+🔹 What is a Constructor?
+A constructor is a special method in a class that is automatically called when an object of that class is created.
+
+✅ Features:
+Has the same name as the class.
+Does not have a return type (not even void).
+Automatically invoked when the object is created.
+Used to initialize fields of a class.
+
+🔸 Types of Constructors in C#
+🔸Default Constructor
+Takes no parameters.
+If you don’t define one, C# provides it automatically.
+Example:
+class Person {
+    public string name;
+
+    public Person() {
+        name = "Unknown";
+    }
+}
+🔸Parameterized Constructor :
+Takes arguments to initialize fields.
+
+
+class Person {
+    public string name;
+
+    public Person(string n) {
+        name = n;
+    }
+}
+🔸Copy Constructor (Not built-in but manually created)
+
+class Person {
+    public string name;
+
+    public Person(Person p) {
+        name = p.name;
+    }
+}
+🔸Static Constructor:
+Initializes static fields.
+Runs once per type, before any object or static method is accessed.
+
+class Logger {
+    static string logPath;
+
+    static Logger() {
+        logPath = "default.txt";
+        Console.WriteLine("Static constructor called");
+    }
+}
+🔹 Static vs Instance Members
+Feature	Instance Member	Static Member
+Accessed via	Object	Class name
+Memory Allocation	Per Object	Once for the class
+Example	person.name	Console.WriteLine()
+Use Case	Object-specific data/methods	Shared logic/data across all instances
+
+🔸 Instance Members Example:
+class Car {
+    public string brand;
+    public void Drive() {
+        Console.WriteLine($"{brand} is driving");
+    }
+}
+
+🔸 Static Members Example:
+class MathUtil {
+    public static double Pi = 3.14;
+    public static int Square(int n) {
+        return n * n;
+    }
+}
