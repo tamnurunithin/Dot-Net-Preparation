@@ -1,0 +1,264 @@
+Day 6: Inheritance & Polymorphism in C#
+
+-----------------------------
+1. INHERITANCE:
+-----------------------------
+- Allows a class (child/derived) to inherit members from another class (parent/base).
+- Promotes code reusability and extensibility.
+
+Syntax:
+class Parent {
+    // base class members
+}
+
+class Child : Parent {
+    // inherits from Parent
+}
+
+Types:
+- Single
+- Multilevel
+- Hierarchical (C# does not support multiple inheritance via classes, only interfaces)
+
+✅ 1. Single Inheritance
+Definition: One derived class inherits from one base class.
+🧠 Example:
+class Animal {
+    public void Eat() {
+        Console.WriteLine("Animal is eating");
+    }
+}
+class Dog : Animal {
+    public void Bark() {
+        Console.WriteLine("Dog is barking");
+    }
+}
+class Program {
+    static void Main() {
+        Dog dog = new Dog();
+        dog.Eat();  // Inherited from Animal
+        dog.Bark(); // Own method
+    }
+}
+Output:
+Animal is eating  
+Dog is barking
+
+
+✅ 2. Multilevel Inheritance
+Definition: A class inherits from a derived class, forming a chain.
+🧠Example:
+class LivingBeing {
+    public void Breathe() {
+        Console.WriteLine("Breathing...");
+    }
+}
+class Animal : LivingBeing {
+    public void Walk() {
+        Console.WriteLine("Animal is walking");
+    }
+}
+class Dog : Animal {
+    public void Bark() {
+        Console.WriteLine("Dog is barking");
+    }
+}
+
+class Program {
+    static void Main() {
+        Dog dog = new Dog();
+        dog.Breathe(); // From LivingBeing
+        dog.Walk();    // From Animal
+        dog.Bark();    // Own method
+    }
+}
+Output:
+Breathing...  
+Animal is walking  
+Dog is barking
+
+✅ 3. Hierarchical Inheritance
+Definition: Multiple classes inherit from the same base class.
+🧠Example:
+class Vehicle {
+    public void Start() {
+        Console.WriteLine("Vehicle starting...");
+    }
+}
+class Car : Vehicle {
+    public void Drive() {
+        Console.WriteLine("Car is driving");
+    }
+}
+class Bike : Vehicle {
+    public void Ride() {
+        Console.WriteLine("Bike is riding");
+    }
+}
+class Program {
+    static void Main() {
+        Car car = new Car();
+        car.Start(); // From Vehicle
+        car.Drive(); // Own method
+
+        Bike bike = new Bike();
+        bike.Start(); // From Vehicle
+        bike.Ride();  // Own method
+    }
+}
+Output:
+Edit
+Vehicle starting...  
+Car is driving  
+Vehicle starting...  
+Bike is riding
+
+
+
+-----------------------------------
+2. POLYMORPHISM:
+-----------------------------------
+- "Many forms" — allows methods to behave differently based on the object calling it.
+
+Types:
+- Compile-Time Polymorphism → Method Overloading
+- Run-Time Polymorphism → Method Overriding
+
+✅METHOD OVERLOADING (Compile-Time Polymorphism)
+Method Overloading means defining multiple methods with the same name but with different parameters (type, number, or order).
+🧠Example:
+class Calculator {
+    public int Add(int a, int b) {
+        return a + b;
+    }
+    public double Add(double a, double b) {
+        return a + b;
+    }
+    public int Add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+
+✅ METHOD OVERRIDING (Runtime Polymorphism)
+Method Overriding allows a derived class to provide a specific implementation of a method that is already defined in its base class.
+🧠Example:
+class Animal {
+    public virtual void Speak() {
+        Console.WriteLine("Animal speaks");
+    }
+}
+class Dog : Animal {
+    public override void Speak() {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+
+🔁 virtual, override, sealed
+1.virtual: Allows a method in the base class to be overridden.
+2.override:Overrides the base class virtual method in derived class.
+3.sealed:Prevents further overriding of an already overridden method.
+
+🧠Example:
+class Animal {
+    public virtual void Speak() {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+class Dog : Animal {
+    public sealed override void Speak() {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+ class Puppy : Dog {
+     public override void Speak() {  
+         Console.WriteLine("Puppy yaps");
+     }
+ }
+sealed prevents further overriding. It’s useful for security, consistency, and avoiding accidental changes.
+
+🌟 Benefits of Polymorphism
+Benefit	Explanation	Example
+Flexibility	Code can work with objects of different classes using a common interface.	A method that takes an Animal can accept Dog, Cat, etc.
+Maintainability	Easier to add/modify behavior in one class without affecting others.	Add Speak() in Dog class without changing existing Animal class.
+Scalability	System grows by adding new derived classes without changing base logic.	Add Cow : Animal later and it fits into the existing system easily.
+
+🔁 Unified Example:
+class Animal {
+    public virtual void MakeSound() {
+        Console.WriteLine("Animal makes sound");
+    }
+}
+class Dog : Animal {
+    public override void MakeSound() {
+        Console.WriteLine("Dog barks");
+    }
+}
+class Cat : Animal {
+    public override void MakeSound() {
+        Console.WriteLine("Cat meows");
+    }
+}
+
+class Zoo {
+    public void Listen(Animal a) {
+        a.MakeSound();  // Works for any Animal-derived class
+    }
+}
+🧪 Usage:
+Zoo zoo = new Zoo();
+zoo.Listen(new Dog());  // Output: Dog barks
+zoo.Listen(new Cat());  // Output: Cat meows
+
+
+
+---------------------------------------------------------
+4. virtual, override, sealed
+---------------------------------------------------------
+- `virtual` → in base class: method can be overridden.
+- `override` → in derived class: overrides base method.
+- `sealed` → prevents further overriding.
+
+Example:
+public sealed override void Speak() { } // Not allowed unless class/method is already virtual
+
+using System;
+class Animal {
+    public virtual void MakeSound() {
+        Console.WriteLine("Animal sound");
+    }
+}
+class Dog : Animal {
+    public sealed override void MakeSound() {
+        Console.WriteLine("Dog barks");
+    }
+}
+class Puppy : Dog {
+    // ❌ This will result in a compile-time error because MakeSound() is sealed in Dog
+    /*
+    public override void MakeSound() {
+        Console.WriteLine("Puppy yaps");
+    }
+    */
+}
+class Program {
+    static void Main(string[] args) {
+        Animal a = new Animal();
+        a.MakeSound();   // Output: Animal sound
+
+        Dog d = new Dog();
+        d.MakeSound();   // Output: Dog barks
+
+        Animal ad = new Dog();
+        ad.MakeSound();  // Output: Dog barks (polymorphism)
+
+        // Uncommenting below will give error due to sealed method
+        // Puppy p = new Puppy();
+        // p.MakeSound();
+    }
+}
+
+
