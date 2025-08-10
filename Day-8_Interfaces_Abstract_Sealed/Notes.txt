@@ -1,0 +1,55 @@
+Day 8 Notes — Interfaces, Abstract Classes, Sealed Classes
+✅1.Interfaces
+Definition: A contract that contains only declarations of methods, properties, events, or indexers.
+Cannot have implementation (until C# 8 where default interface methods were introduced).
+A class or struct must implement all members of an interface it inherits.
+Supports multiple inheritance.
+Members are public by default.
+
+🧠Example:
+public interface IAnimal
+{
+    void Speak();
+}
+public class Dog : IAnimal
+{
+    public void Speak()
+    {
+        Console.WriteLine("Woof!");
+    }
+}
+✅2.Abstract Classes
+Definition: A class that cannot be instantiated and can have both abstract methods (no body) and normal methods (with body).
+Use when you want shared code + force child classes to implement specific members.
+Can have fields, constructors, and access modifiers.
+Abstract methods must be overridden in derived non-abstract classes.
+🧠Example:
+public abstract class Animal
+{
+    public abstract void Speak(); // Must be implemented
+
+    public void Sleep() // Common method
+    {
+        Console.WriteLine("Sleeping...");
+    }
+}
+public class Cat : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Meow!");
+    }
+}
+
+✅3. Sealed Classes
+Definition: A class that cannot be inherited.
+Use to prevent further inheritance for security or performance reasons.
+Often used for utility or final implementations.
+🧠Example:
+public sealed class Calculator
+{
+    public int Add(int a, int b) => a + b;
+}
+
+// This will cause an error:
+// public class MyCalc : Calculator { }
