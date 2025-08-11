@@ -1,0 +1,88 @@
+Day 9: Properties, Indexers, Enums, Structs – Interview Notes
+✅1. Properties
+Properties are special methods (getters and setters) that provide controlled access to class fields.
+
+📌Types of Properties
+⚡Read-Write Property
+class Employee {
+    private string name;
+    public string Name {
+        get { return name; }
+        set { name = value; }
+    }
+}
+
+⚡Read-Only Property
+public int Age { get; } = 25;  // Can only set inside constructor or initializer
+
+⚡Write-Only Property:
+private string password;
+public string Password {
+    set { password = value; }
+}
+
+⚡Auto-Implemented Property:
+public string City { get; set; }
+
+⚡Property with Validation
+private int _age;
+public int Age {
+    get => _age;
+    set {
+        if (value < 0) throw new ArgumentException("Age cannot be negative");
+        _age = value;
+    }
+}
+
+
+✅2.Indexers
+Indexers allow objects to be accessed like arrays using the this keyword.
+🧠Example:
+class MyCollection {
+    private string[] data = new string[5];
+    
+    public string this[int index] {
+        get { return data[index]; }
+        set { data[index] = value; }
+    }
+}
+class Program {
+    static void Main() {
+        MyCollection coll = new MyCollection();
+        coll[0] = "Hello";
+        Console.WriteLine(coll[0]); // Hello
+    }
+}
+
+
+✅3.Enums
+Enums are a set of named constants for better readability.
+🧠Example:
+enum Days { Sun, Mon, Tue, Wed, Thu, Fri, Sat }
+class Program {
+    static void Main() {
+        Days today = Days.Mon;
+        Console.WriteLine(today);       // Mon
+        Console.WriteLine((int)today);  // 1
+    }
+}
+
+
+✅4.Structs
+Structs are value types (stored in stack) used to represent small lightweight objects.
+🧠Example:
+struct Point {
+    public int X;
+    public int Y;
+    public Point(int x, int y) {
+        X = x;
+        Y = y;
+    }
+}
+
+class Program {
+    static void Main() {
+        Point p = new Point(10, 20);
+        Console.WriteLine($"X: {p.X}, Y: {p.Y}");
+    }
+}
