@@ -1,0 +1,42 @@
+✅Exception Handling in C#:
+What is Exception Handling?
+Exceptions are runtime errors that stop the normal flow of the program.
+Exception handling allows us to catch and handle errors without crashing the program.
+
+⚡Basic Syntax
+try {
+    // Code that might throw an exception
+}
+catch (ExceptionType ex) {
+    // Code to handle the exception
+}
+finally {
+    // Code that always runs (optional)
+}\
+
+📌Keywords
+try – Wraps the code that may cause an exception.
+catch – Handles the exception.
+finally – Runs regardless of whether there’s an exception.
+throw – Used to manually throw an exception.
+
+🧠Example:
+
+using System;
+class Program {
+    static void Main() {
+        try {
+            int[] numbers = { 1, 2, 3 };
+            Console.WriteLine(numbers[5]); // This will cause an error
+        }
+        catch (IndexOutOfRangeException ex) {
+            Console.WriteLine("Error: Index out of range.");
+        }
+        finally {
+            Console.WriteLine("Finally block executed.");
+        }
+    }
+}
+Output:
+Error: Index out of range.
+Finally block executed.
