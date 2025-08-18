@@ -1,0 +1,94 @@
+✅C# Collections:
+1. What are Collections?
+Collections are classes provided by .NET to store, manage, and manipulate groups of related objects.
+Unlike arrays, collections can grow/shrink dynamically and provide built-in methods for searching, adding, removing, etc.
+Found in the namespace:
+using System.Collections.Generic;
+
+✅1.List<T>
+Definition
+A generic collection that stores items in ordered, indexed form.
+Similar to an array but resizable dynamically.
+Allows duplicate values.
+Key Properties
+Preserves insertion order.
+Provides index-based access.
+Can contain duplicate elements.
+Capacity automatically increases as elements are added.
+
+⚡Common Methods:
+Add(item) → Adds an element.
+Remove(item) → Removes first occurrence of element.
+RemoveAt(index) → Removes element at given index.
+Insert(index, item) → Inserts element at position.
+Contains(item) → Checks if element exists.
+Sort() → Sorts the list.
+Count → Number of elements.
+Clear() → Removes all elements.
+
+🧠Example:
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main()
+    {
+        List<string> names = new List<string>() { "Nithin", "Rahul", "Priya" };
+        names.Add("Anjali");
+        names.Remove("Rahul");
+        Console.WriteLine("List elements:");
+        foreach (string name in names)
+        {
+            Console.WriteLine(name);
+        }
+    }
+}
+
+
+✅2.Dictionary<TKey, TValue>
+Definition
+A generic collection of key–value pairs
+Keys must be unique.
+Very fast lookups (O(1) average).
+
+⚡Key Properties:
+Key → Must be unique (cannot repeat).
+Value → Can be duplicate.
+Does not preserve insertion order.
+
+⚡Common Methods
+Add(key, value) → Adds element.
+Remove(key) → Removes element with the given key.
+ContainsKey(key) → Checks if key exists.
+ContainsValue(value) → Checks if value exists.
+TryGetValue(key, out value) → Safely gets value without exception.
+Count → Number of elements.
+Indexer: dict[key] to access value.
+
+🧠Example:
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main()
+    {
+        Dictionary<int, string> students = new Dictionary<int, string>();
+        students.Add(1, "Nithin");
+        students.Add(2, "Rahul");
+        Console.WriteLine("Student with ID 1: " + students[1]);
+        foreach (var kvp in students)
+        {
+            Console.WriteLine($"ID: {kvp.Key}, Name: {kvp.Value}");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
